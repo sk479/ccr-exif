@@ -53,14 +53,18 @@ type
   TIPTCRepeatablePairs = array of TIPTCRepeatablePair;
 {$ENDIF}
 
+{$IFDEF LegacyTStringDynArray}
+  TIPTCStringArray = Array of String;
+{$ELSE}
   TIPTCStringArray = type Types.TStringDynArray; //using 'type' means the helper defined below will only apply to it
+{$ENDIF}
 
-  {$IFDEF XE3+}
+{$IFDEF XE3+}
   TIPTCStringArrayHelper = record helper for TIPTCStringArray
     class function CreateFromStrings(const Strings: TStrings): TIPTCStringArray; static;
     function Join(const Separator: string): string;
   end;
-  {$ENDIF}
+{$ENDIF}
 
   TIPTCData = class;
   TIPTCSection = class;

@@ -49,6 +49,10 @@
   {$DEFINE NeedHausladenByteStringsFix}
 {$IFEND}
 
+{$IF CompilerVersion >= 33}
+  {$DEFINE LegacyTStringDynArray}
+{$IFEND}
+
 {$IF DEFINED(VER240) AND DEFINED(MACOS)}
   {$DEFINE BrokenFMXJpegExport}
 {$IFEND}
