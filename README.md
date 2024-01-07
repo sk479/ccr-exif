@@ -7,7 +7,7 @@ CCR Exif is a cross platform Delphi library to read and write Exif, IPTC and XMP
 [Chris Rolliston](https://delphihaven.wordpress.com/), now maintained by [Wolfcast](https://wolfcast.com/).
 
 ### **Licence**
-[Mozilla Public License, version 2.0](LICENSE.md) ([license also available on mozilla.org](https://www.mozilla.org/en-US/MPL/2.0/)).
+[Mozilla Public License, version 2.0](LICENSE.txt) ([license also available on mozilla.org](https://www.mozilla.org/en-US/MPL/2.0/)).
 
 ### **Updates**
 You can find the latest version on the [GitHub repository](https://github.com/Wolfcast/ccr-exif). The project was originally hosted on [Google Code](https://code.google.com/archive/p/ccr-exif/) by the original author.
