@@ -1,36 +1,36 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is CCR.Exif.IPTC.pas.                                              }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2014 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ This unit contains IPTC metadata classes and types used within the project.                      }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 {$I CCR.Exif.inc}
 unit CCR.Exif.IPTC;
 {
-  As saved, IPTC data is a flat list of tags ('datasets'), no more no less, which is
-  reflected in the implementation of TIPTCData.LoadFromStream. However, as found in JPEG
-  files, they are put in an Adobe data structure, itself put inside an APP13 segment.
+  As saved, IPTC data is a flat list of tags ('datasets'), no more no less, which is reflected in
+  the implementation of TIPTCData.LoadFromStream. However, as found in JPEG files, they are put in
+  an Adobe data structure, itself put inside an APP13 segment.
 
-  Note that by default, string tags are 'only' interpreted as having UTF-8 data if the
-  encoding tag is set, with the UTF-8 marker as its data. If you don't load any tags
-  before adding others, however, the default is to persist to UTF-8, writing said marker
-  tag of course. To force interpreting loaded tags as UTF-8, set the
-  AlwaysAssumeUTF8Encoding property of TIPTCData to True *before* calling
-  LoadFromGraphic or LoadFromStream.
+  Note that by default, string tags are 'only' interpreted as having UTF-8 data if the encoding tag
+  is set, with the UTF-8 marker as its data. If you don't load any tags before adding others,
+  however, the default is to persist to UTF-8, writing said marker tag of course. To force
+  interpreting loaded tags as UTF-8, set the AlwaysAssumeUTF8Encoding property of TIPTCData to True
+  *before* calling LoadFromGraphic or LoadFromStream.
 }
 interface
 

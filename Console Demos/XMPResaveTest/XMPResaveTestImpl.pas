@@ -1,29 +1,30 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing Exif metadata in JPEG files  }
-{ Version 1.5.1                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is XMPResaveTestImpl.pas.                                          }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2012 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ XMP resave console demo.                                                                         }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 unit XMPResaveTestImpl;
 {
-  Tests XMP roundtripping in light of TXMPPacket now doing its own saving. Note that the
-  resaved data may be larger than the original if the latter used XML attributes rather
-  than (only) element nodes to store XMP properties. On the other hand, my code doesn't
-  write out any padding at the end of the packet, and produces neat, human-readable XML.
+  Tests XMP roundtripping in light of TXMPPacket now doing its own saving. Note that the resaved
+  data may be larger than the original if the latter used XML attributes rather than (only) element
+  nodes to store XMP properties. On the other hand, my code doesn't write out any padding at the end
+  of the packet, and produces neat, human-readable XML.
 }
 interface
 

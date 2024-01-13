@@ -14,7 +14,7 @@ Notes:
   its extension changed to .xmp is used.
 - Both SourceJpegFile and OutputXMPFile can include an
   asterisk wildcard.
-- On OS X, wrap parameters that contain wildcards in double
+- On macOS, wrap parameters that contain wildcards in double
   quotes (e.g. "*.jpeg") so that the command-line interpreter
   will not expand them before the application gets to see
   what you've passed.

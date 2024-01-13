@@ -1,22 +1,23 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is CCR.Exif.TiffUtils.pas.                                         }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2014 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ This unit contains TIFF images classes, types and utility functions used within the project.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 {$I CCR.Exif.inc}
 unit CCR.Exif.TiffUtils;
@@ -480,7 +481,7 @@ begin
 end;
 
 class function TTiffTag.MatchOffsetToByteCountID(OffsetTagID: TTiffTagID;
-  var ByteCountID: TTiffTagID): Boolean; 
+  var ByteCountID: TTiffTagID): Boolean;
 begin
   Result := True;
   case OffsetTagID of
@@ -744,7 +745,7 @@ var
   MaxTagCount, StartPos, StreamSize, Offset64: Int64;
 begin
   LoadErrors := [];
-  Result := nil;                    
+  Result := nil;
   StartPos := BasePosition + Offset;
   StreamSize := Stream.Seek(0, soEnd);
   if (StartPos < 0) or (StartPos + 2 > StreamSize) then

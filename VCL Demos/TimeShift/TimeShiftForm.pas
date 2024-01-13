@@ -1,22 +1,23 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing Exif metadata in JPEG files  }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is TimeShiftForm.pas.                                              }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2012 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Exif time shifter VCL demo.                                                                      }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 unit TimeShiftForm;
 {
@@ -308,7 +309,7 @@ begin
           if NewValue = 0 then NewValue := Data.DateTimeOriginal.Value;
         end;
       end;
-      if NewValue <> 0 then           
+      if NewValue <> 0 then
         Data.FileDateTime := NewValue;
     end;
     ListView.Items.Delete(I);

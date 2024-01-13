@@ -1,27 +1,30 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.2                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2012 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ This unit contains common code used within the FireMonkey demos (require Delphi XE3 to compile). }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.2 beta                                                                        }
+{ Last modified: 2013-10-22                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 unit CCR.Exif.FMXUtils;
 {
-  This unit (a) surfaces some OS X functionality not exposed by FMX, (b) fixes some
-  awful menu code in the FMX source, particularly for OS X, and (c) provides a
-  custom NSApplication delegate that receives 'open file' messages. The latter can
-  be handled by assigning the OnOpenFile event of the TFileManager singleton.
+  This unit (a) surfaces some macOS functionality not exposed by FMX, (b) fixes some awful menu code
+  in the FMX source, particularly for macOS, and (c) provides a custom NSApplication delegate that
+  receives 'open file' messages. The latter can be handled by assigning the OnOpenFile event of the
+  TFileManager singleton.
 }
 interface
 
@@ -60,13 +63,12 @@ type
     property IsChecked write SetIsChecked; //unfortunately, IsChecked prop setter not virtual
   end;
 
-  { TMainMenu doesn't work if placed on a data module, and always activates itself
-    if placed on a form. This is crap behaviour given the only platform where a native
-    menu bar still makes 'native' sense is OS X, and OS X is where there is typically
-    no 'main form' to 'own' the menu bar (instead, the application 'owns' it). The
-    following interposer class therefore changes the default TMainMenu behaviour to
-    require an explicit call to Activate. Oddly enough, this results in *less* code
-    internally.
+  { TMainMenu doesn't work if placed on a data module, and always activates itself if placed on a
+    form. This is crap behaviour given the only platform where a native menu bar still makes
+    'native' sense is macOS, and macOS is where there is typically no 'main form' to 'own' the menu
+    bar (instead, the application 'owns' it). The following interposer class therefore changes the
+    default TMainMenu behaviour to require an explicit call to Activate. Oddly enough, this results
+    in *less* code internally.
 
     Aside from that, this interposer also fixes the walking-up-the-list thing. }
 
@@ -113,10 +115,9 @@ type
     function Update: Boolean; override;
   end;
 
-  { Changes behaviour to work with action lists placed on data modules. NB: as I
-    personally don't use them any other way, this implementation skips the default
-    one's going through the action 'target' controls, and just asks the actions to
-    update themselves directly. }
+  { Changes behaviour to work with action lists placed on data modules. NB: as I personally don't
+    use them any other way, this implementation skips the default one's going through the action
+    'target' controls, and just asks the actions to update themselves directly. }
 
   TForm = class(FMX.Forms.TForm)
   strict private
@@ -782,7 +783,7 @@ class procedure TMacCommands.Quit;
 begin
   if (Application = nil) or Application.Terminated then Exit;
   {$IFDEF MACOS}
-  Application.Terminated := True; //doesn't appear ever set to True on OS X!
+  Application.Terminated := True; //doesn't appear ever set to True on macOS!
   {$ENDIF}
   Application.Terminate;
 end;

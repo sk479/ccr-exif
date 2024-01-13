@@ -1,34 +1,35 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is IPTCEditForm.pas.                                               }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2012 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ IPTC tag editor VCL demo.                                                                        }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 unit IPTCEditForm;
 {
-  Simple editor for IPTC data stored in JPEG files. You'll need to edit this
-  source file slightly if you want it to work 100% correctly when compiling
-  under D2006 (see where the BUGGYCOMPILER define is used - basically,
-  intermediate variables are needed, like what I've done for ExifListFrame.pas).
+  Simple editor for IPTC data stored in JPEG files. You'll need to edit this source file slightly if
+  you want it to work 100% correctly when compiling under D2006 (see where the BUGGYCOMPILER define
+  is used - basically, intermediate variables are needed, like what I've done for
+  ExifListFrame.pas).
 }
 interface
 
 uses
-  Windows, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, ExtDlgs, Buttons,   
+  Windows, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, ExtDlgs, Buttons,
   ActnList, StdActns, ComCtrls, StdCtrls, ExtCtrls, Grids, ValEdit, CCR.Exif.Demos;
 
 type

@@ -1,52 +1,53 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is CCR.Exif.pas.                                                   }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2014 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ This unit contains classes, types, constants and utility functions for reading and writing image }
+{ metadata.                                                                                        }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 {$I CCR.Exif.inc}
 unit CCR.Exif;
 {
   Notes:
-  - In Exif-jargon, we have 'tags' and 'IFDs' (including 'sub-IFDs'). In the jargon of
-    this unit, we have 'tags' and 'sections'.
-  - The basic usage pattern is this: construct a TExifData instance; call LoadFromGraphic,
-    which has file name, TStream and TGraphic/TBitmap overloads; read and write
-    the published tag properties as you so wish; and call SaveToGraphic to persist the
-    changes made. Supported graphic types are JPEG, PSD and TIFF. LoadFromGraphic (which
-    is a function) returns True if the source was of a supported graphic type, False
-    otherwise. In contrast, SaveToGraphic will simply raise an exception if the
-    destination isn't of a supported type.
-  - The idea is that, in general, if your sole concern is reading and/or writing Exif
-    metadata, you only need to explicitly add CCR.Exif to your uses clause. This unit
-    does still itself use the other ones (CCR.Exif.BaseUtils etc.) though.
-  - You enumerate the tags of a section with the for-in syntax. No traditional indexing
-    is provided so as to avoid confusing tag IDs with tag indices.
-  - The enumerator implementation for TExifSection allows calling Delete on a tag while
-    you are enumerating the container section.
-  - When tags are loaded from a graphic, any associated XMP packet is loaded too, though
-    XMP data is only actually parsed when required.
-  - When setting a tag property, the default behaviour is for the loaded XMP packet
-    to be updated if the equivalent XMP tag already exists. This can be changed however
-    by setting the XMPWritePolicy property of TExifData.
-  - Maker note rewriting is *not* supported in TExifData. While you can make changes to
-    the loaded maker note tags, these changes won't ever be persisted.
-  - When compiling in XE2+, you need to set a 'FMX' global define for this unit to work
-    properly in a FireMonkey application.
+  - In Exif-jargon, we have 'tags' and 'IFDs' (including 'sub-IFDs'). In the jargon of this unit, we
+    have 'tags' and 'sections'.
+  - The basic usage pattern is this: construct a TExifData instance; call LoadFromGraphic, which has
+    file name, TStream and TGraphic/TBitmap overloads; read and write the published tag properties
+    as you so wish; and call SaveToGraphic to persist the changes made. Supported graphic types are
+    JPEG, PSD and TIFF. LoadFromGraphic (which is a function) returns True if the source was of a
+    supported graphic type, False otherwise. In contrast, SaveToGraphic will simply raise an
+    exception if the destination isn't of a supported type.
+  - The idea is that, in general, if your sole concern is reading and/or writing Exif metadata, you
+    only need to explicitly add CCR.Exif to your uses clause. This unit does still itself use the
+    other ones (CCR.Exif.BaseUtils etc.) though.
+  - You enumerate the tags of a section with the for-in syntax. No traditional indexing is provided
+    so as to avoid confusing tag IDs with tag indices.
+  - The enumerator implementation for TExifSection allows calling Delete on a tag while you are
+    enumerating the container section.
+  - When tags are loaded from a graphic, any associated XMP packet is loaded too, though XMP data is
+    only actually parsed when required.
+  - When setting a tag property, the default behaviour is for the loaded XMP packet to be updated if
+    the equivalent XMP tag already exists. This can be changed however by setting the XMPWritePolicy
+    property of TExifData.
+  - Maker note rewriting is *not* supported in TExifData. While you can make changes to the loaded
+    maker note tags, these changes won't ever be persisted.
+  - When compiling in XE2+, you need to set a 'FMX' global define for this unit to work properly in
+    a FireMonkey application.
 }
 interface
 
@@ -580,15 +581,15 @@ type
 
   TFocalPlaneResolution = class(TCustomExifResolution)
   protected
-    procedure GetTagInfo(var Section: TExifSectionKind; 
-      var XTag, YTag, UnitTag: TExifTagID; var Schema: TXMPNamespace; 
+    procedure GetTagInfo(var Section: TExifSectionKind;
+      var XTag, YTag, UnitTag: TExifTagID; var Schema: TXMPNamespace;
       var XName, YName, UnitName: UnicodeString); override;
   end;
 
   TThumbnailResolution = class(TCustomExifResolution)
   protected
     procedure GetTagInfo(var Section: TExifSectionKind;
-      var XTag, YTag, UnitTag: TExifTagID; var Schema: TXMPNamespace; 
+      var XTag, YTag, UnitTag: TExifTagID; var Schema: TXMPNamespace;
       var XName, YName, UnitName: UnicodeString); override;
   end;
 
@@ -1422,7 +1423,7 @@ const
   stMeasurementInInterop = stMeasurementVoid;
 
 function BinToHexStr(Data: Pointer; StartPos, Size: Integer): string; overload;
-function BinToHexStr(MemStream: TCustomMemoryStream): string; overload; 
+function BinToHexStr(MemStream: TCustomMemoryStream): string; overload;
 
 function ContainsOnlyASCII(const S: UnicodeString): Boolean; overload;
 function ContainsOnlyASCII(const S: RawByteString): Boolean; overload;
@@ -1906,7 +1907,7 @@ function TryExifStringToDateTime(const S: string; var DateTime: TDateTime): Bool
 var
   Year, Month, Day, Hour, Min, Sec: Integer;
 begin //'2007:09:02 02:30:49'
-  Result := (Length(S) = 19) and (S[5] = ':') and (S[8] = ':') and 
+  Result := (Length(S) = 19) and (S[5] = ':') and (S[8] = ':') and
     TryStrToInt(Copy(S, 1, 4), Year) and
     TryStrToInt(Copy(S, 6, 2), Month) and
     TryStrToInt(Copy(S, 9, 2), Day) and
@@ -2660,7 +2661,7 @@ begin
      tdLongIntFraction]) and (Tag.ElementCount > Index) and (Index >= 0) then
     Result := PExifFractionArray(Tag.Data)[Index]
   else
-    Result := Default;     
+    Result := Default;
 end;
 
 function TExifSection.GetLongIntValue(TagID: TExifTagID; Index: Integer): TLongIntTagValue;
@@ -4346,7 +4347,7 @@ var
   ValueAsString, XMPValue: string;
   I: Integer;
 begin
-  if NewChar = #0 then 
+  if NewChar = #0 then
   begin
     Owner[esGPS].Remove(RefTagID);
     Owner.XMPPacket.RemoveProperty(xsExif, XMPName);
@@ -4361,7 +4362,7 @@ begin
       XMPValue := Copy(XMPValue, 1, I) + ValueAsString;
       Owner.XMPPacket.UpdateProperty(xsExif, XMPName, XMPValue);
       Break;
-    end; 
+    end;
 end;
 
 function TCustomGPSCoordinate.GetValue(Index: Integer): TExifFraction;
@@ -6038,7 +6039,7 @@ var
   XMPName: string;
 begin
   FSections[esGPS].SetStringValue(TagID, Value);
-  if FindGPSTagXMPName(TagID, XMPName) then 
+  if FindGPSTagXMPName(TagID, XMPName) then
     XMPPacket.UpdateProperty(xsExif, XMPName, Value);
 end;
 
@@ -6241,7 +6242,7 @@ begin
 {$IFDEF MSWINDOWS}                                        {$WARN SYMBOL_PLATFORM OFF}
   FileSetDate(FStream.Handle, DateTimeToFileDate(Value)); {$WARN SYMBOL_PLATFORM ON}
 {$ELSE}
-  FileSetDate(FStream.FileName, DateTimeToFileDate(Value)); //does actually work on OS X at least
+  FileSetDate(FStream.FileName, DateTimeToFileDate(Value)); //does actually work on macOS at least
 {$ENDIF}
 end;
 
@@ -6529,7 +6530,7 @@ begin
         Break;
       end;
     end;
-  UpdateApp1JPEGSegments(InStream, OutStream, Self, XMPPacket); //!!!IPTC (also TJPEGImageEx)  
+  UpdateApp1JPEGSegments(InStream, OutStream, Self, XMPPacket); //!!!IPTC (also TJPEGImageEx)
 end;
 
 procedure TExifData.DoSaveToPSD(InStream, OutStream: TStream);

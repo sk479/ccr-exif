@@ -1,6 +1,6 @@
 # **Release History**
 
-### **1.5.4 (2024-01-07)**
+### **1.5.4 (2024-01-13)**
 * First [Wolfcast](https://github.com/Wolfcast/ccr-exif) release.
 * Updated license from MPL 1.1 to MPL 2.0.
 * Now compiles properly in:

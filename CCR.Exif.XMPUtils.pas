@@ -1,40 +1,38 @@
-﻿{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.3                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Original Code is CCR.Exif.XMPUtils.pas.                                          }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2014 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+﻿{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ This unit contains XMP metadata classes, types and utility functions used within the project.    }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.4                                                                             }
+{ Last modified: 2024-01-13                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 {$I CCR.Exif.inc}
 unit CCR.Exif.XMPUtils;
 {
-  This unit implements a IDOMDocument/IDOMNode-based XMP packet parser and editor. Since
-  v1.1.0, edited data is written out manually (i.e., the IDOMXXX interfaces are only
-  used to read). 
+  This unit implements a IDOMDocument/IDOMNode-based XMP packet parser and editor. Since v1.1.0,
+  edited data is written out manually (i.e., the IDOMXXX interfaces are only used to read).
 
-  Note that the UpdateXXX methods of TXMPPacket are called automatically when you set a
-  tag property of TCustomExifData. Their behaviour depends upon the TXMPPacket's
-  UpdatePolicy property, which has three possible values:
-  - xwAlwaysUpdate: if the new value is an empty string, then the XMP property is
-    deleted, else it is changed (or added). This setting is the default for standalone
-    TXMPPacket instances.
-  - xwUpdateIfExists: any existing property is updated, but if it doesn't already exist,
-    no property is added. This setting is the default for an TXMPPacket instance that is
-    attached to a TCustomExifData object; change this to xwAlwaysUpdate to mimic Windows
-    Vista's behaviour.
+  Note that the UpdateXXX methods of TXMPPacket are called automatically when you set a tag property
+  of TCustomExifData. Their behaviour depends upon the TXMPPacket's UpdatePolicy property, which has
+  three possible values:
+  - xwAlwaysUpdate: if the new value is an empty string, then the XMP property is deleted, else it
+    is changed (or added). This setting is the default for standalone TXMPPacket instances.
+  - xwUpdateIfExists: any existing property is updated, but if it doesn't already exist, no property
+    is added. This setting is the default for an TXMPPacket instance that is attached to a
+    TCustomExifData object; change this to xwAlwaysUpdate to mimic Windows Vista's behaviour.
   - xwRemove: always removes the property when UpdateProperty is called.
 }
 interface
@@ -88,7 +86,7 @@ type
     constructor Create(ASource: TXMPNamespaceInfo); overload;
     procedure Assign(Source: TPersistent); overload; override;
     procedure Assign(AKind: TXMPKnownNamespace); reintroduce; overload;
-    procedure Assign(const APrefix, AURI: UnicodeString); reintroduce; overload; 
+    procedure Assign(const APrefix, AURI: UnicodeString); reintroduce; overload;
     property Kind: TXMPNamespace read FKind;
     property Prefix: UnicodeString read GetPrefix write SetPrefix;
     property URI: UnicodeString read GetURI;
@@ -867,7 +865,7 @@ begin
     begin
       repeat
         { Originally, this loop was exited as soon as a text node was found. This
-          however doesn't work with the ADOM backend (as used by default on OS X)
+          however doesn't work with the ADOM backend (as used by default on macOS)
           because ADOM can intepret whitespace prior to a child element as a text
           node of the parent. }
         case DataNode.nodeType of
@@ -1358,7 +1356,7 @@ begin
 end;
 
 function TXMPSchema.LoadProperty(const ASourceNode: IDOMNode): TXMPProperty;
-begin                          
+begin
   FLoadingProperty := True;
   try
     if FProperties.Count = 0 then
@@ -1791,7 +1789,7 @@ const
   PacketEnd: UTF8String =
     #9'</rdf:RDF>'#10 +
     '</x:xmpmeta>'#10 +
-    '<?xpacket end="w"?> ';      //The packet wrapper (i.e., the <?xpacket lines) are optional according to the XMP spec, 
+    '<?xpacket end="w"?> ';      //The packet wrapper (i.e., the <?xpacket lines) are optional according to the XMP spec,
   PaddingByte: AnsiChar = ' ';   //but required by Windows Explorer in Vista. Vista also needs a trailing space character,
   DescNodeStart: UnicodeString = //else it doesn't read and raises a spurious error when the user tries to write.
     #9#9'<rdf:Description rdf:about="%s" xmlns:%s="%s">'#10;
@@ -1979,7 +1977,7 @@ begin
   begin
     RemoveProperty(SchemaKind, PropName);
     Exit;
-  end;                                   
+  end;
   if UpdatePolicy = xwAlwaysUpdate then
     Schema := FindOrAddSchema(SchemaKind)
   else

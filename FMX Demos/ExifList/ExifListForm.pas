@@ -1,27 +1,29 @@
-{**************************************************************************************}
-{                                                                                      }
-{ CCR Exif - Delphi class library for reading and writing image metadata               }
-{ Version 1.5.2                                                                        }
-{                                                                                      }
-{ The contents of this file are subject to the Mozilla Public License Version 1.1      }
-{ (the "License"); you may not use this file except in compliance with the License.    }
-{ You may obtain a copy of the License at http://www.mozilla.org/MPL/                  }
-{                                                                                      }
-{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT   }
-{ WARRANTY OF ANY KIND, either express or implied. See the License for the specific    }
-{ language governing rights and limitations under the License.                         }
-{                                                                                      }
-{ The Initial Developer of the Original Code is Chris Rolliston. Portions created by   }
-{ Chris Rolliston are Copyright (C) 2009-2012 Chris Rolliston. All Rights Reserved.    }
-{                                                                                      }
-{**************************************************************************************}
+{**************************************************************************************************}
+{                                                                                                  }
+{ CCR Exif                                                                                         }
+{ https://github.com/Wolfcast/ccr-exif                                                             }
+{ Copyright (c) 2009-2014 Chris Rolliston. All Rights Reserved.                                    }
+{                                                                                                  }
+{ This file is part of CCR Exif which is released under the terms of the Mozilla Public License,   }
+{ v. 2.0. See file LICENSE.txt or go to https://mozilla.org/MPL/2.0/ for full license details.     }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Exif tag lister FireMonkey demo (require Delphi XE3 to compile).                                 }
+{                                                                                                  }
+{**************************************************************************************************}
+{                                                                                                  }
+{ Version:       1.5.2 beta                                                                        }
+{ Last modified: 2013-10-22                                                                        }
+{ Contributors:  Chris Rolliston                                                                   }
+{                                                                                                  }
+{**************************************************************************************************}
 
 unit ExifListForm;
 {
-  FMX/XE3 port of the original VCL Exif List demo. Targets both Windows and OS X; on Windows
-  is an SDI application like the VCL original, on OS X Mac-style MDI a la Preview.app.
-  Note: the latter means the program opens with no form showing on OS X. This is not a bug,
-  but intentional.
+  FMX/XE3 port of the original VCL Exif List demo. Targets both Windows and macOS; on Windows is an
+  SDI application like the VCL original, on macOS Mac-style MDI a la Preview.app. Note: the latter
+  means the program opens with no form showing on macOS. This is not a bug, but intentional.
 }
 interface
 
@@ -140,7 +142,7 @@ end;
 procedure TfrmExifList.FormCreate(Sender: TObject);
 begin
   lyoButtonBar.Visible := (TFileManager.DocumentMode = dmOnePerAppInst);
-  { On OS X, the text of a selected tree view item is white. While the item text
+  { On macOS, the text of a selected tree view item is white. While the item text
     proper is covered, our additional labels are not, so set up handling it ourselves
     (the other part is the shared OnChange handler for the two tree views). }
   FHighlightedLabels := TDictionary<TObject,TLabel>.Create;

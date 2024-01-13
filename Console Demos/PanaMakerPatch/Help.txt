@@ -7,7 +7,7 @@ Usage:
 
 Notes:
 - JpegFile can contain wildcards. If used and running on
-  OS X, make sure JpegFile is wrapped in double quotes so
+  macOS, make sure JpegFile is wrapped in double quotes so
   that the command-line interpreter doesn't expand anything
   for the application.
 - TagID can be a decimal or hexadecimal number, and must
