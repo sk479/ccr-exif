@@ -1,5 +1,6 @@
 __history/
 __recovery/
+VCL\ Demos/**/*.ico
 *.a
 *.apk
 *.bpi
@@ -20,6 +21,7 @@ __recovery/
 *.map
 *.o
 *.ocx
+*.otares
 *.projdata
 *.rsm
 *.so
@@ -28,4 +30,3 @@ __recovery/
 *.tvsconfig
 *.~*
 *Resource.rc
-
