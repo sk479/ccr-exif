@@ -14,12 +14,10 @@ object frmIPTC: TfrmIPTC
   Padding.Top = 8
   Padding.Right = 8
   Padding.Bottom = 8
-  OldCreateOrder = False
   ScreenSnap = True
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object PageControl: TPageControl
     Left = 8
@@ -29,16 +27,8 @@ object frmIPTC: TfrmIPTC
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 6
-    ExplicitTop = 6
-    ExplicitWidth = 298
-    ExplicitHeight = 363
     object TabSheet1: TTabSheet
       Caption = 'Envelope Record'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object scbEnvelope: TScrollBox
         Left = 0
         Top = 0
@@ -48,8 +38,6 @@ object frmIPTC: TfrmIPTC
         BorderStyle = bsNone
         ParentBackground = True
         TabOrder = 0
-        ExplicitWidth = 291
-        ExplicitHeight = 342
         DesignSize = (
           286
           331)
@@ -155,7 +143,6 @@ object frmIPTC: TfrmIPTC
           Width = 131
           Height = 21
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 7
           OnChange = ControlChange
         end
@@ -265,10 +252,6 @@ object frmIPTC: TfrmIPTC
     object TabSheet2: TTabSheet
       Caption = 'Application Record'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object scbEditorial: TScrollBox
         Left = 0
         Top = 0
@@ -660,7 +643,6 @@ object frmIPTC: TfrmIPTC
           Width = 131
           Height = 21
           Style = csDropDownList
-          ItemHeight = 0
           TabOrder = 5
           OnChange = ControlChange
         end
@@ -932,7 +914,6 @@ object frmIPTC: TfrmIPTC
           Width = 131
           Height = 21
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 15
           OnChange = ControlChange
           Items.Strings = (
@@ -948,7 +929,6 @@ object frmIPTC: TfrmIPTC
           Width = 131
           Height = 21
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 35
           OnChange = ControlChange
           Items.Strings = (
@@ -975,7 +955,6 @@ object frmIPTC: TfrmIPTC
       Height = 28
       Action = actOpen
       Caption = '&Open File'
-      TabOrder = 0
       Glyph.Data = {
         36030000424D3603000000000000360000002800000010000000100000000100
         18000000000000030000120B0000120B00000000000000000000FF00FF078DBE
@@ -1003,6 +982,7 @@ object frmIPTC: TfrmIPTC
         FF00FFFF00FFFF00FFFF00FFFF00FF0C85180C85180C85180C8518FF00FFFF00
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF0C85180C85180C
         85180C8518FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+      TabOrder = 0
     end
     object btnSave: TBitBtn
       Left = 6
@@ -1011,7 +991,6 @@ object frmIPTC: TfrmIPTC
       Height = 28
       Action = actSaveOrReload
       Caption = '&Save File'
-      TabOrder = 1
       Glyph.Data = {
         36060000424D3606000000000000360000002800000020000000100000000100
         18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -1064,6 +1043,7 @@ object frmIPTC: TfrmIPTC
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       NumGlyphs = 2
+      TabOrder = 1
     end
     object btnClose: TBitBtn
       Left = 6
@@ -1091,7 +1071,6 @@ object frmIPTC: TfrmIPTC
       Height = 28
       Action = actSaveOrReload
       Caption = '&Reload File'
-      TabOrder = 3
       Glyph.Data = {
         36060000424D3606000000000000360000002800000020000000100000000100
         18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
@@ -1144,6 +1123,7 @@ object frmIPTC: TfrmIPTC
         FFFF00FFFF00FFFF00FFFF00FFFF00FFB3B3B3B3B3B3B3B3B3B3B3B3B3B3B3B3
         B3B3B3B3B3B3B3B3FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       NumGlyphs = 2
+      TabOrder = 3
     end
   end
   object panFooter: TPanel

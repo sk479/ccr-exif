@@ -30,7 +30,8 @@ interface
 
 uses
   Windows, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, ExtDlgs, Buttons,
-  ActnList, StdActns, ComCtrls, StdCtrls, ExtCtrls, Grids, ValEdit, CCR.Exif.Demos;
+  ActnList, StdActns, ComCtrls, StdCtrls, ExtCtrls, Grids, ValEdit, CCR.Exif.Demos,
+  System.Actions;
 
 type
   TValueListEditor = class(ValEdit.TValueListEditor)

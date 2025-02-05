@@ -287,6 +287,7 @@ type
       is neither a JPEG nor a PSD image. }
     procedure SaveToGraphic(const FileName: string); overload;
     procedure SaveToGraphic(const Graphic: IStreamPersist); overload;
+    procedure SaveToGraphic(const InMemoryGraphic: TCustomMemoryStream); overload;
     procedure SaveToStream(Stream: TStream);
     procedure SortTags;
     property LoadErrors: TMetadataLoadErrors read FLoadErrors write FLoadErrors; //!!!v. rarely set at present
@@ -1635,6 +1636,12 @@ end;
 procedure TIPTCData.SaveToGraphic(const Graphic: IStreamPersist);
 begin
   DoSaveToGraphic(Graphic, GetGraphicSaveMethod);
+end;
+
+procedure TIPTCData.SaveToGraphic(const InMemoryGraphic: TCustomMemoryStream);
+begin
+  InMemoryGraphic.Position := 0;
+  DoSaveToGraphic(InMemoryGraphic, GetGraphicSaveMethod);
 end;
 
 procedure TIPTCData.SaveToStream(Stream: TStream);

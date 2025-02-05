@@ -272,6 +272,7 @@ type
     procedure SaveToFile(const FileName: string);
     procedure SaveToGraphic(const FileName: string); overload;
     procedure SaveToGraphic(const Graphic: IStreamPersist); overload;
+    procedure SaveToGraphic(const InMemoryGraphic: TCustomMemoryStream); overload;
     procedure SaveToStream(Stream: TStream);
     function TryLoadFromStream(Stream: TStream): Boolean;
     procedure ResetRawXMLCache;
@@ -1719,6 +1720,12 @@ end;
 procedure TXMPPacket.SaveToGraphic(const Graphic: IStreamPersist);
 begin
   DoSaveToGraphic(Graphic, GetGraphicSaveMethod);
+end;
+
+procedure TXMPPacket.SaveToGraphic(const InMemoryGraphic: TCustomMemoryStream);
+begin
+  InMemoryGraphic.Position := 0;
+  DoSaveToGraphic(InMemoryGraphic, GetGraphicSaveMethod);
 end;
 
 procedure TXMPPacket.SaveToStream(Stream: TStream);
